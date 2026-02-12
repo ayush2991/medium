@@ -25,18 +25,10 @@ When given a stock ticker:
 - Include key risks.
 - Describe what role this stock might play in a diversified portfolio.
 - If you do not have current data, acknowledge uncertainty.
-"""
+""",
 )
 
 
-async def main():
-    ticker = input("Enter a ticker: ").strip().upper()
-    result = await Runner.run(
-        quant_agent,
-        input=f"Provide an outlook for {ticker}",
-    )
-    print("\n=== Quant Agent Outlook (With Tools) ===\n")
-    print(result.final_output)
-
-if __name__ == "__main__":
-    asyncio.run(main())
+async def get_analysis(ticker):
+    result = await Runner.run(quant_agent, input=f"Provide an outlook for {ticker}")
+    return result.final_output
