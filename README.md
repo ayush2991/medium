@@ -1,30 +1,58 @@
-# Quant Agent
+# 📈 Quant Agent
 
-AI-powered quantitative equity analyst using the OpenAI Agents SDK and yfinance.
+An AI-powered quantitative equity analyst that leverages the **OpenAI Agents SDK** and **yfinance** to provide real-time financial insights.
+
+## 🚀 Overview
+
+Quant Agent acts as a virtual research assistant. By simply entering a stock ticker, the agent fetches the latest market data and synthesizes a comprehensive outlook, highlighting strengths, risks, and its potential role in a diversified portfolio.
 
 ## 🛠️ Setup
 
-1. **Install dependencies**:
+1. **Clone the repository** (if you haven't already):
+   ```bash
+   git clone <repo-url>
+   cd quant-agent
+   ```
+
+2. **Install dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Configure API Key**:
+3. **Configure API Key**:
+   Set your OpenAI API key as an environment variable:
    ```bash
    export OPENAI_API_KEY='your-api-key-here'
    ```
+   *Note: For Streamlit Cloud deployment, add `OPENAI_API_KEY` to your secrets.*
 
-## 📈 Usage
+## 💻 Usage
 
-Run the agent:
+### Streamlit Web Interface (Recommended)
+Launch the interactive dashboard:
 ```bash
-python part-1/quant_agent.py
+streamlit run app.py
 ```
 
-Enter a stock ticker (e.g., `AAPL`) when prompted to receive a financial outlook.
+### CLI Analysis
+You can also call the analysis function programmatically or import it into your own scripts:
+```python
+from quant_agent import get_analysis
+import asyncio
 
-## 📁 Structure
+async def main():
+    print(await get_analysis("AAPL"))
 
-- `part-1/quant_agent.py`: Core agent logic and tools.
-- `DESIGN.md`: System architecture details.
-- `requirements.txt`: Necessary Python packages.
+if __name__ == "__main__":
+    asyncio.run(main())
+```
+
+## 📁 Project Structure
+
+- `app.py`: Streamlit-based web dashboard.
+- `quant_agent.py`: Core logic for the AI analyst and data tools.
+- `DESIGN.md`: Detailed system architecture and design justifications.
+- `requirements.txt`: Python package dependencies.
+
+---
+*Disclaimer: This tool is for research purposes only and does not constitute financial advice.*
